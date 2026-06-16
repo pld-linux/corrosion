@@ -13,6 +13,7 @@ License:	MIT
 Group:		Libraries
 Source0:	https://github.com/corrosion-rs/corrosion/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	060ee79a6bf7c5a2e4e810370fbb7b61
+Patch0:		Modules.patch
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 3.22
 BuildRequires:	ninja
@@ -31,6 +32,7 @@ integracji Rusta z istniejącymi projektami CMake.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 %cmake -B build \
@@ -55,8 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%{_libdir}/cmake/Corrosion/CorrosionConfig.cmake
-%{_libdir}/cmake/Corrosion/CorrosionConfigVersion.cmake
-%{_datadir}/cmake/Corrosion.cmake
-%{_datadir}/cmake/CorrosionGenerator.cmake
-%{_datadir}/cmake/FindRust.cmake
+%{_libdir}/cmake/Corrosion
+%{_datadir}/cmake/Modules/Corrosion.cmake
+%{_datadir}/cmake/Modules/CorrosionGenerator.cmake
+%{_datadir}/cmake/Modules/FindRust.cmake

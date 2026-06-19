@@ -22,6 +22,8 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%undefine	_debugsource_packages
+
 %description
 Corrosion, formerly known as cmake-cargo, is a tool for integrating
 Rust into an existing CMake project.
